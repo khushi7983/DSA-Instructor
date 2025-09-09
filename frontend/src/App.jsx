@@ -12,7 +12,7 @@ function App() {
     const raw = localStorage.getItem("dsa.activeId");
     return raw || null;
   });
-  const [apiUrl, setApiUrl] = useState(() => localStorage.getItem("dsa.apiUrl") || "http://localhost:5000");
+  const [apiUrl, setApiUrl] = useState(() => localStorage.getItem("dsa.apiUrl") || "https://dsa-instructor-noml.onrender.com");
   const [model, setModel] = useState(() => localStorage.getItem("dsa.model") || "gemini-1.5-flash");
   const [showSettings, setShowSettings] = useState(false);
 
