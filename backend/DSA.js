@@ -3,10 +3,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-dotenv.config();
-
+const ai = new GoogleGenerativeAI(process.env.API_KEY || "");
 const app = express();
-app.use(cors()); // allow frontend requests
+app.use(cors({
+  origin: 'https://dsa-instructor-ngy8-j4io7c8az-khushi-panwars-projects.vercel.app', // Replace with your actual Vercel frontend URL
+  methods: ['POST', 'GET'],
+  credentials: true
+}));
 app.use(express.json()); // parse JSON bodies
 
 const apiKey = process.env.API_KEY;
@@ -15,7 +18,7 @@ const genAI = new GoogleGenerativeAI(apiKey || "");
 // Basic healthcheck
 app.get("/health", (_req, res) => {
   if (!apiKey) {
-    return res.status(500).json({ ok: false, error: "Missing API key" });
+    return res.status(500).json({ error: "Server misconfigured: missing API key" });
   }
   return res.json({ ok: true });
 });
