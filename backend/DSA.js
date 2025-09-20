@@ -2,11 +2,15 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const ai = new GoogleGenerativeAI(process.env.API_KEY || "");
+dotenv.config();
+// ...existing code...
 const app = express();
 app.use(cors({
-  origin: 'https://dsa-instructor-ngy8-j4io7c8az-khushi-panwars-projects.vercel.app', // Replace with your actual Vercel frontend URL
+  origin: [
+    'http://localhost:5173', // Local frontend (Vite default)
+    'http://localhost:3000', // Local frontend (React default)
+    'https://dsa-instructor-ngy8-j4io7c8az-khushi-panwars-projects.vercel.app' // Vercel deployment
+  ],
   methods: ['POST', 'GET'],
   credentials: true
 }));
