@@ -10,7 +10,8 @@ app.use(cors({
     'http://localhost:5173', // Local frontend (Vite default)
     'http://localhost:3000', // Local frontend (React default)
     'https://dsa-instructor-ngy8-j4io7c8az-khushi-panwars-projects.vercel.app', // Vercel deployment
-    'https://dsa-instructor-noml.onrender.com' // Render backend
+    'https://dsa-instructor-noml.onrender.com', // Render backend
+    'https://dsa-instructor.vercel.app' // Vercel frontend (replace with your actual Vercel domain if different)
   ],
   methods: ['POST', 'GET'],
   credentials: true
